@@ -1,0 +1,15 @@
+services:
+  lolenrock_productivity:
+    image: lolenrock_productivity
+    container_name: lolenrock_productivity
+    restart: unless-stopped
+    ports:
+      - "3457:3456"
+    environment:
+      VIKUNJA_SERVICE_PUBLICURL: "http://192.168.0.200:3457/"
+      VIKUNJA_SERVICE_JWTSECRET: "76dd2b3d973ad5bf4904fe6b94c5289fcd70237871925ac2154ea11cbca2bbf0"
+      VIKUNJA_DATABASE_TYPE: sqlite
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
+    volumes:
+      - ./files:/app/vikunja/files
+      - ./db:/db
